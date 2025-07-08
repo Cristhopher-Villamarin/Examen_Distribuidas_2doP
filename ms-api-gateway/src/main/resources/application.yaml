@@ -1,0 +1,58 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: publicaciones-autor
+          uri: lb://SERVICE-PUBLICACIONES
+          predicates:
+            - Path=/api/v1/autores/**
+          filters:
+            - StripPrefix=2
+        - id: publicaciones-libros
+          uri: lb://SERVICE-PUBLICACIONES
+          predicates:
+            - Path=/api/v1/libros/**
+          filters:
+            - StripPrefix=2
+        - id: publicaciones-papers
+          uri: lb://SERVICE-PUBLICACIONES
+          predicates:
+            - Path=/api/v1/papers/**
+          filters:
+            - StripPrefix=2
+        - id: notificaciones-route
+          uri: lb://SERVICE-NOTIFICACIONES
+          predicates:
+            - Path=/api/v1/notificaciones/**
+          filters:
+            - StripPrefix=2
+        - id: catalogo-route
+          uri: lb://SERVICE-CATALOGO
+          predicates:
+            - Path=/api/v1/catalogos/**
+          filters:
+            - StripPrefix=2
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
