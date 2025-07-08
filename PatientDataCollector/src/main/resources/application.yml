@@ -3,10 +3,10 @@ server:
 
 spring:
   application:
-    name: SERVICE-COLLECTOR
+    name: SERVICE-PATIENTDATA
 
   datasource:
-    url: jdbc:postgresql://localhost:26257/collector_db?sslmode=disable
+    url: jdbc:postgresql://localhost:26257/patientdb?sslmode=disable
     username: root
     password:
 
@@ -23,8 +23,8 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: admin
 
 eureka:
   client:

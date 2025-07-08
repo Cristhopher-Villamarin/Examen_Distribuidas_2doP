@@ -11,34 +11,10 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: collector-vital-signs
-          uri: lb://SERVICE-COLLECTOR
+        - id: patientdatacollector
+          uri: lb://SERVICE-PATIENTDATA
           predicates:
             - Path=/conjunta/2p/vital-signs/**
-          filters:
-            - StripPrefix=2
-        - id: collector-deviceid
-          uri: lb://SERVICE-COLLECTOR
-          predicates:
-            - Path=/conjunta/2p/health-analyzer/**
-          filters:
-            - StripPrefix=2
-        - id: notifier-mock
-          uri: lb://SERVICE-NOTIFICACIONES
-          predicates:
-            - Path=/conjunta/2p/mock/**
-          filters:
-            - StripPrefix=2
-        - id: notifier-email
-          uri: lb://SERVICE-NOTIFICACIONES
-          predicates:
-            - Path=/conjunta/2p/email/**
-          filters:
-            - StripPrefix=2
-        - id: notifier-sms
-          uri: lb://SERVICE-NOTIFICACIONES
-          predicates:
-            - Path=/conjunta/2p/sms/**
           filters:
             - StripPrefix=2
 
@@ -49,8 +25,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
   instance:
-    prefer-ip-address: false
-    instance-id: ${spring.application.name}:${random.uuid}
+    prefer-ip-address: true
 
 management:
   endpoints:

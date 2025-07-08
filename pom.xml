@@ -18,10 +18,11 @@
     <description>Microservicios NRC 23316</description>
 
     <modules>
-        <module>CareNotifier</module>
-        <module>HealthAnalyzer</module>
-        <module>PatientDataCollector</module>
         <module>me-eureka-server</module>
+        <module>patientdatacollector</module>
+        <module>sincronizacion</module>
+        <module>notificaciones</module>
+        <module>ms-catalogo</module>
         <module>ms-api-gateway</module>
     </modules>
 </project>
