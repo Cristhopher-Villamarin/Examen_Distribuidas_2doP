@@ -1,12 +1,14 @@
 package PatientDataCollector.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
 
 import java.time.Instant;
 
 @Data
+@Getter
+@Setter
 public class VitalSignRequest {
     @NotBlank(message = "deviceId is required")
     private String deviceId;

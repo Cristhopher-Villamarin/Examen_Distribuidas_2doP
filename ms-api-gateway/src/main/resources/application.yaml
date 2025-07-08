@@ -11,34 +11,34 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: publicaciones-autor
-          uri: lb://SERVICE-PUBLICACIONES
+        - id: collector-vital-signs
+          uri: lb://SERVICE-COLLECTOR
           predicates:
-            - Path=/api/v1/autores/**
+            - Path=/conjunta/2p/vital-signs/**
           filters:
             - StripPrefix=2
-        - id: publicaciones-libros
-          uri: lb://SERVICE-PUBLICACIONES
+        - id: collector-deviceid
+          uri: lb://SERVICE-COLLECTOR
           predicates:
-            - Path=/api/v1/libros/**
+            - Path=/conjunta/2p/health-analyzer/**
           filters:
             - StripPrefix=2
-        - id: publicaciones-papers
-          uri: lb://SERVICE-PUBLICACIONES
-          predicates:
-            - Path=/api/v1/papers/**
-          filters:
-            - StripPrefix=2
-        - id: notificaciones-route
+        - id: notifier-mock
           uri: lb://SERVICE-NOTIFICACIONES
           predicates:
-            - Path=/api/v1/notificaciones/**
+            - Path=/conjunta/2p/mock/**
           filters:
             - StripPrefix=2
-        - id: catalogo-route
-          uri: lb://SERVICE-CATALOGO
+        - id: notifier-email
+          uri: lb://SERVICE-NOTIFICACIONES
           predicates:
-            - Path=/api/v1/catalogos/**
+            - Path=/conjunta/2p/email/**
+          filters:
+            - StripPrefix=2
+        - id: notifier-sms
+          uri: lb://SERVICE-NOTIFICACIONES
+          predicates:
+            - Path=/conjunta/2p/sms/**
           filters:
             - StripPrefix=2
 
@@ -49,7 +49,8 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false
+    instance-id: ${spring.application.name}:${random.uuid}
 
 management:
   endpoints:

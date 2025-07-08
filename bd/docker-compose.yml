@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  cockroach1:
+    image: cockroachdb/cockroach:latest
+    container_name: node1
+    hostname: node1  # Importante para el DNS interno
+    ports:
+      - "26257:26257"  # SQL (externo:26257 → interno:26257)
+      - "8080:8080"    # UI
+    volumes:
+      - cockroach1:/cockroach/cockroach-data
+    command: start-single-node --insecure --advertise-addr=node1
+
+  cockroach2:
+    image: cockroachdb/cockroach:latest
+    container_name: node2
+    hostname: node2
+    ports:
+      - "26258:26257"  # SQL (externo:26258 → interno:26257)
+      - "8081:8080"    # UI
+    volumes:
+      - cockroach2:/cockroach/cockroach-data
+    command: start --insecure --store=node2 --listen-addr=0.0.0.0:26257 --http-addr=0.0.0.0:8080 --join=node1:26257 --advertise-addr=node2
+
+volumes:
+  cockroach1:
+  cockroach2:

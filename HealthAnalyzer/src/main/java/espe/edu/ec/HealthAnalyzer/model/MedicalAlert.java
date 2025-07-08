@@ -1,28 +1,33 @@
 package espe.edu.ec.HealthAnalyzer.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.Data;
+import java.time.Instant;
 
-import java.time.LocalDateTime;
-
+@Data
 @Entity
 @Table(name = "medical_alerts")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class MedicalAlert {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "alert_id", nullable = false)
     private String alertId;
+
+    @Column(name = "type", nullable = false)
     private String type;
+
+    @Column(name = "device_id", nullable = false)
     private String deviceId;
-    private double value;
-    private double threshold;
-    private LocalDateTime timestamp;
+
+    @Column(name = "value", nullable = false)
+    private Double value;
+
+    @Column(name = "threshold", nullable = false)
+    private Double threshold;
+
+    @Column(name = "timestamp", nullable = false)
+    private Instant timestamp;
 }
