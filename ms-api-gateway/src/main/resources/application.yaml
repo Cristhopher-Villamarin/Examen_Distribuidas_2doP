@@ -17,7 +17,12 @@ spring:
             - Path=/conjunta/2p/vital-signs/**
           filters:
             - StripPrefix=2
-
+        - id: healthanalyzer
+          uri: lb://SERVICE-HEALTHANALYZER
+          predicates:
+            - Path=/conjunta/2p/alerts/**
+          filters:
+            - StripPrefix=2
 eureka:
   client:
     service-url:

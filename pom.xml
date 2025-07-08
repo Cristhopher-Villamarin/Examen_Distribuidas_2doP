@@ -21,7 +21,7 @@
         <module>me-eureka-server</module>
         <module>patientdatacollector</module>
         <module>sincronizacion</module>
-        <module>notificaciones</module>
+        <module>healthanalyzer</module>
         <module>ms-catalogo</module>
         <module>ms-api-gateway</module>
     </modules>

@@ -1,4 +1,4 @@
-package notificaciones;
+package healthanalyzer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 
-public class NotificacionesApplication {
+public class HealthAnalyzer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NotificacionesApplication.class, args);
+		SpringApplication.run(HealthAnalyzer.class, args);
 	}
 
 }

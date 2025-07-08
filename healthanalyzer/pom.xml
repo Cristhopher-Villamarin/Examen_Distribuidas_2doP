@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ec.edu.ec</groupId>
-	<artifactId>notificaciones</artifactId>
+	<artifactId>healthanalyzer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>notificaciones</name>
-	<description>Microservicio de notificaciones</description>
+	<name>healthanalyzer</name>
+	<description>Microservicio de healthanalyzer</description>
 	<url/>
 	<licenses>
 		<license/>

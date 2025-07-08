@@ -3,21 +3,23 @@ server:
 
 spring:
   application:
-    name: SERVICE-NOTIFICACIONES
+    name: SERVICE-HEALTHANALYZER
 
   datasource:
-   url:  jdbc:postgresql://localhost:26257/notificaciones_db?user=root&password=
-   username: root
-   password:
+    url: jdbc:postgresql://localhost:26257/healthanalyzerdb?sslmode=disable
+    username: root
+    password:
+
   jpa:
     hibernate:
-      ddl-auto: update #create-drop
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
         format_sql: true
         use_sql_comments: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
   rabbitmq:
     host: localhost
     port: 5672
