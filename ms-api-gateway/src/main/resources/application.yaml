@@ -23,6 +23,12 @@ spring:
             - Path=/conjunta/2p/alerts/**
           filters:
             - StripPrefix=2
+        - id: carenotifier
+          uri: lb://SERVICE-CARENOTIFIER
+          predicates:
+            - Path=/conjunta/2p/mock/**
+          filters:
+            - StripPrefix=2
 eureka:
   client:
     service-url:

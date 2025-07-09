@@ -22,7 +22,7 @@
         <module>patientdatacollector</module>
         <module>sincronizacion</module>
         <module>healthanalyzer</module>
-        <module>ms-catalogo</module>
+        <module>carenotifier</module>
         <module>ms-api-gateway</module>
     </modules>
 </project>
